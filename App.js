@@ -1,22 +1,36 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 class App extends React.Component {
 	constructor(){
 		super();
-		this.state = { txt: 'this is the state txt'}
+		this.state = { 
+			red: 0,
+			green: 0,
+			blue: 0
+		}
 		this.update = this.update.bind(this)
 	}
 	update(e){
-		this.setState({txt:e.target.value});
+		this.setState({
+			red: ReactDOM.findDOMNode(this.refs.red).value,
+			green: ReactDOM.findDOMNode(this.refs.green).value,
+			blue: ReactDOM.findDOMNode(this.refs.blue).value
+		});
 	}
     render() {        
         return ( 
         <div>
-        	{this.state.txt}
+        	
+        	<Slider refs="red" update={this.update} />
+        	{this.state.red}
         	<hr />
-        	<Slider update={this.update} />
-        	<Slider update={this.update} />
-        	}
+        	<Slider refs="green" update={this.update} />
+        	{this.state.green}
+        	<hr />
+        	<Slider refs="blue" update={this.update} />
+        	{this.state.blue}
+        	<hr />
         </div>
         )
     }
