@@ -7,7 +7,10 @@ output:{
 },
 devServer: {
     inline: true,
-    port: 3333
+    port: 3333,
+    stats: {
+        chunks:false
+    }
 },
 module: {
 loaders:[
